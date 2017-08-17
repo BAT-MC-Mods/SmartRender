@@ -20,6 +20,7 @@ package net.smart.render;
 import java.lang.reflect.*;
 import java.util.*;
 
+import net.minecraft.client.model.ModelBiped;
 import net.minecraft.util.math.MathHelper;
 import net.smart.render.playerapi.SmartRenderModelPlayerBase;
 import org.lwjgl.opengl.GL11;
@@ -279,8 +280,8 @@ public class SmartRenderModel extends SmartRenderContext
 		imp.animateArms(totalHorizontalDistance, currentHorizontalSpeed, totalTime, viewHorizontalAngelOffset, viewVerticalAngelOffset, factor);
 
 		// TODO FIXME restore this
-//		if(mp.aimedBow)
-//			imp.animateBowAiming(totalHorizontalDistance, currentHorizontalSpeed, totalTime, viewHorizontalAngelOffset, viewVerticalAngelOffset, factor);
+		if(mp.rightArmPose == ModelBiped.ArmPose.BOW_AND_ARROW)
+			imp.animateBowAiming(totalHorizontalDistance, currentHorizontalSpeed, totalTime, viewHorizontalAngelOffset, viewVerticalAngelOffset, factor);
 
 		if(bipedOuter.previous != null && !bipedOuter.fadeRotateAngleX)
 			bipedOuter.previous.rotateAngleX = bipedOuter.rotateAngleX;
