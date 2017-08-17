@@ -20,6 +20,7 @@ package net.smart.render;
 import java.lang.reflect.*;
 import java.util.*;
 
+import com.sun.xml.internal.bind.v2.TODO;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.util.math.MathHelper;
 import net.smart.render.playerapi.SmartRenderModelPlayerBase;
@@ -261,12 +262,11 @@ public class SmartRenderModel extends SmartRenderContext
 		if(mp.isRiding)
 			imp.animateRiding(totalHorizontalDistance, currentHorizontalSpeed, totalTime, viewHorizontalAngelOffset, viewVerticalAngelOffset, factor);
 
-		// TODO FIXME restore these
-//		if(mp.heldItemLeft != 0)
-//			imp.animateLeftArmItemHolding(totalHorizontalDistance, currentHorizontalSpeed, totalTime, viewHorizontalAngelOffset, viewVerticalAngelOffset, factor);
-//
-//		if(mp.heldItemRight != 0)
-//			imp.animateRightArmItemHolding(totalHorizontalDistance, currentHorizontalSpeed, totalTime, viewHorizontalAngelOffset, viewVerticalAngelOffset, factor);
+		if(mp.leftArmPose == ModelBiped.ArmPose.ITEM || mp.leftArmPose == ModelBiped.ArmPose.BLOCK)
+			imp.animateLeftArmItemHolding(totalHorizontalDistance, currentHorizontalSpeed, totalTime, viewHorizontalAngelOffset, viewVerticalAngelOffset, factor);
+		
+        if(mp.rightArmPose == ModelBiped.ArmPose.ITEM || mp.rightArmPose == ModelBiped.ArmPose.BLOCK)
+			imp.animateRightArmItemHolding(totalHorizontalDistance, currentHorizontalSpeed, totalTime, viewHorizontalAngelOffset, viewVerticalAngelOffset, factor);
 
 		if(mp.swingProgress > -9990F)
 		{
@@ -279,7 +279,6 @@ public class SmartRenderModel extends SmartRenderContext
 
 		imp.animateArms(totalHorizontalDistance, currentHorizontalSpeed, totalTime, viewHorizontalAngelOffset, viewVerticalAngelOffset, factor);
 
-		// TODO FIXME restore this
 		if(mp.rightArmPose == ModelBiped.ArmPose.BOW_AND_ARROW)
 			imp.animateBowAiming(totalHorizontalDistance, currentHorizontalSpeed, totalTime, viewHorizontalAngelOffset, viewVerticalAngelOffset, factor);
 
