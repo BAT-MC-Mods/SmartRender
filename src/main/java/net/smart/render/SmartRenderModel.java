@@ -21,6 +21,7 @@ import java.lang.reflect.*;
 import java.util.*;
 
 import net.minecraft.util.math.MathHelper;
+import net.smart.render.playerapi.SmartRenderModelPlayerBase;
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.model.*;
@@ -250,7 +251,7 @@ public class SmartRenderModel extends SmartRenderContext
 		bipedOuter.fadeRotateAngleY = !entity.isRiding();
 
 		imp.animateHeadRotation(totalHorizontalDistance, currentHorizontalSpeed, totalTime, viewHorizontalAngelOffset, viewVerticalAngelOffset, factor);
-
+		
 		if(isSleeping)
 			imp.animateSleeping(totalHorizontalDistance, currentHorizontalSpeed, totalTime, viewHorizontalAngelOffset, viewVerticalAngelOffset, factor);
 
@@ -308,8 +309,8 @@ public class SmartRenderModel extends SmartRenderContext
 	{
 		bipedNeck.ignoreBase = false;
 		bipedHead.rotateAngleY = 0F;
-		bipedHead.rotateAngleX = Eighth;
-		bipedTorso.rotationPointZ = -17F;
+		bipedHead.rotateAngleX = 0;
+		bipedTorso.rotationPointZ = 0f;
 	}
 
 	public void animateArmSwinging(float totalHorizontalDistance, float currentHorizontalSpeed)
